@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+const port = process.env.PORT || 8000;
 
 app.get('/',function(req, res){
   res.sendFile(__dirname + '/client.html');
@@ -24,6 +25,6 @@ io.on('connection', function(socket){
   });
 });
 
-http.listen(3000, function(){
+http.listen(port, function(){
   console.log('server on!');
 });
