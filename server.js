@@ -8,25 +8,12 @@ app.get('/',function(req, res){
   res.sendFile(__dirname + '/client.html');
 });
 
-var url = require('url');
-var app = http.createServer(function(request,response){ 
-  var _url = request.url; 
-  var queryData = url.parse(_url,true).query;
-  var title = queryData.id;
-});
 
 
 var count=1;
 io.on('connection', function(socket){
   console.log('user connected: ', socket.id);
-  if(title == null)
-  {
-    var name = "user" + count++;
-  }
-  else
-  {
-    var name = title;
-  }
+  var name = "user" + count++;
   io.to(socket.id).emit('change name',name);
 
   socket.on('disconnect', function(){
