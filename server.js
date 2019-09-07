@@ -6,6 +6,7 @@ var fs = require('fs');
 var bodyParser = require('body-parser');
 
 var querystring = require('querystring');
+var title;
 
 const port = process.env.PORT || 8000;
 
@@ -19,16 +20,16 @@ app.get('/',function(req, res){
 
 app.post('/',function(req,res){
 
-  var title = req.body.id; 
-  res.send(title)
+  title = req.body.id; 
+
 })
 
 
 var count=1;
 io.on('connection', function(socket){
   console.log('user connected: ', socket.id);
-  var name = "user" + count++;
-  // var name = title;
+  // var name = "user" + count++;
+  var name = title;
   io.to(socket.id).emit('change name',name);
 
   socket.on('disconnect', function(){
