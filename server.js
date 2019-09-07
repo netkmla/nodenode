@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/',function(req, res){
   res.sendFile(__dirname + '/client.html');
   title = req.body.id;
+  console.log(title);
 });
 
 app.post('/',function(req,res){
