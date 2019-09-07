@@ -17,7 +17,7 @@ app.get('/',function(req, res){
   res.sendFile(__dirname + '/client.html');
 });
 
-app.post('/form_receiver',function(req,res){
+app.post('/',function(req,res){
 
   var title = req.body.id; 
 })
