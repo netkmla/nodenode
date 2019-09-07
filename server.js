@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/',function(req, res){
   res.sendFile(__dirname + '/client.html');
-  title = req.url;
+  title = req.param('id');
   console.log(title);
 });
 
