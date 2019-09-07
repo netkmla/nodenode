@@ -20,8 +20,7 @@ app.get('/',function(req, res){
 
 app.post('/',function(req,res){
 
-  title = req.query.id; 
-  res.send(req.query.id)
+  console.log("id :", req.body.id);
 })
 
 
