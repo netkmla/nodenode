@@ -20,6 +20,7 @@ app.get('/',function(req, res){
 
 app.post('/',function(req,res){
   title = req.body.id;
+  console.log(title);
 })
 
 
