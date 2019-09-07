@@ -2,18 +2,32 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var fs = require('fs');
+var bodyParser = require('body-parser');
+
+var querystring = require('querystring');
+
 const port = process.env.PORT || 8000;
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
 
 app.get('/',function(req, res){
   res.sendFile(__dirname + '/client.html');
 });
 
+app.post('/form_receiver',function(req,res){
+
+  var title = req.body.id; 
+})
 
 
 var count=1;
 io.on('connection', function(socket){
   console.log('user connected: ', socket.id);
-  var name = "user" + count++;
+  // var name = "user" + count++;
+  var name = title;
   io.to(socket.id).emit('change name',name);
 
   socket.on('disconnect', function(){
