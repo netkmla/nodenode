@@ -18,9 +18,8 @@ app.get('/',function(req, res){
   res.sendFile(__dirname + '/client.html');
 });
 
-app.post('https://kmlakmla.herokuapp.com',function(req,res){
-
-  console.log("id :", req.body.id);
+app.post('/',function(req,res){
+  title = req.body.id;
 })
 
 
